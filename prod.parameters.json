@@ -13,6 +13,12 @@
       },
       "storageAccountSku": {
         "value": "Standard_LRS"
+      },
+      "storageTier": {
+        "value": "Cool"
+      },
+      "containerName": {
+        "value": "prodcontainer"
       }
     }
   }
