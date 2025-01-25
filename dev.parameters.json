@@ -2,23 +2,23 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-      "resourceGroupName": {
-        "value": "dev1-resource-group"
+      "environmentName": {
+        "value": "dev"
       },
       "location": {
         "value": "swedencentral"
-      },
-      "storageAccountName": {
-        "value": "devstorageacctvb"
       },
       "storageAccountSku": {
         "value": "Standard_LRS"
       },
       "containerName": {
-        "value": "devcontainer"
+        "value": "landing"
       },
       "storageTier": {
         "value": "Cool"
+      },
+      "projectName": {
+        "value": "tailwind"
       }
     }
   }

@@ -78,6 +78,8 @@ resource containerCreation 'Microsoft.Storage/storageAccounts/blobServices/conta
   }
 }
 
+
+
 output storageAccountId string = storageAccount.id  
 output storageAccountName string = storageAccount.name
 output containerId string = containerCreation.id  
