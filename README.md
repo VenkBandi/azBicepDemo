@@ -1,6 +1,3 @@
-Here's a draft of the `README.md` file based on your Bicep file:
-
----
 
 # **Azure Infrastructure Deployment with Bicep**
 
@@ -105,7 +102,7 @@ az deployment sub create \
   --name myproject-dev-deployment \
   --location eastus \
   --template-file main.bicep \
-  --parameters dev
+  --parameters devdev.parameters.json
 ```
 
 ---
