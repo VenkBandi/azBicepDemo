@@ -5,6 +5,9 @@
       "environmentName": {
         "value": "dev"
       },
+      "projectName": {
+        "value": "koivsto"
+      },
       "location": {
         "value": "swedencentral"
       },
@@ -17,8 +20,14 @@
       "storageTier": {
         "value": "Cool"
       },
-      "projectName": {
-        "value": "tailwind"
+      "adminUsername": {
+        "value": "koivistonnauto"
+      },
+      "adminPassword": {
+        "value": "P@ssw0rd1234!"
+      },
+      "databaseName": {
+        "value": "koivsto"
       }
     }
   }

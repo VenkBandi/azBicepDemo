@@ -12,6 +12,8 @@ param location string
 @description('The name of the resource group')
 param resourceGroupName string = '${environmentName}-${projectName}-swecent'
 
+// Storage Account
+
 @description('The name of the storage account')
 param storageAccountName  string = '${environmentName}strageaccnt${projectName}'
 
@@ -24,11 +26,30 @@ param storageTier string
 @description('The name of the container to create')
 param containerName string
 
+// Data Factory
+
 @description('The name of the data factory')
 param dataFactoryName string = '${environmentName}datafactory${projectName}'
 
+// Key Vault
 @description('The name of the key vault')
 param keyVaultName string = '${environmentName}keyvault${projectName}'
+
+// SQL Database
+
+@description('The name of the Azure SQL Server.')
+param sqlServerName string = '${environmentName}sqlserver${projectName}'
+
+@description('The administrator username for the Azure SQL Server.')
+param adminUsername string
+
+@description('The administrator password for the Azure SQL Server.')
+@secure()
+param adminPassword string
+
+@description('The name of the Azure SQL Database.')
+param databaseName string
+
 
 resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: resourceGroupName
@@ -64,5 +85,16 @@ module keyVaultModule 'modules/keyVault.bicep' = {
   params: {
     keyVaultName: keyVaultName
     location: location
+  }
+}
+
+module sqlDatabaseModule 'modules/sqlDatabase.bicep' = {
+  name: 'sqlDatabaseDeployment'
+  scope: resourceGroup
+  params: {
+    sqlServerName: sqlServerName
+    adminUsername: adminUsername
+    adminPassword: adminPassword
+    databaseName: databaseName
   }
 }
