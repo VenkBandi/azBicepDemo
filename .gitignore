@@ -15,3 +15,6 @@ node_modules/
 /dist/
 sample.txt
 maintest.bicep
+python/.env
+python/secrets.json
+

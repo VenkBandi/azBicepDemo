@@ -14,8 +14,11 @@
       "storageAccountSku": {
         "value": "Standard_LRS"
       },
-      "containerName": {
+      "containerName1": {
         "value": "landing"
+      },
+      "containerName2": {
+        "value": "staging"
       },
       "storageTier": {
         "value": "Cool"
@@ -27,6 +30,9 @@
         "value": "P@ssw0rd1234!"
       },
       "databaseName": {
+        "value": "koivsto"
+      },
+      "workspaceName": {
         "value": "koivsto"
       }
     }

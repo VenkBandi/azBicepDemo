@@ -21,6 +21,7 @@ param skuTier string = 'Basic'
 @description('The location for the resources.')
 param location string = resourceGroup().location
 
+
 resource sqlServer 'Microsoft.Sql/servers@2022-02-01-preview' = {
   name: sqlServerName
   location: location
@@ -35,14 +36,22 @@ resource sqlDatabase 'Microsoft.Sql/servers/databases@2022-02-01-preview' = {
   name: databaseName
   location: location
   properties: {
-    createMode: 'Default'
-    sampleName: 'AdventureWorksLT' // Specifies the AdventureWorksLT sample database
+    maxSizeBytes: 1073741824  // 1 GB
   }
   sku: {
     name: skuName
     tier: skuTier
   }
 }
+resource sqlFirewallRule 'Microsoft.Sql/servers/firewallRules@2022-02-01-preview' = {
+  parent: sqlServer
+  name: 'AllowAzureIPs'
+  properties: {
+    startIpAddress: '0.0.0.0'
+    endIpAddress: '255.255.255.255'
+  }
+}
+
 
 output sqlServerName string = sqlServer.name
 output sqlDatabaseName string = sqlDatabase.name

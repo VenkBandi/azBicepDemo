@@ -23,8 +23,11 @@ param storageAccountSku string
 @description('The storage tier for the storage account (e.g., Hot, Cool)')
 param storageTier string
 
-@description('The name of the container to create')
-param containerName string
+@description('The name of the landing container to create')
+param containerName1 string
+
+@description('The name of the staging container to create')
+param containerName2 string
 
 // Data Factory
 
@@ -50,6 +53,9 @@ param adminPassword string
 @description('The name of the Azure SQL Database.')
 param databaseName string
 
+@description('The name of DataBricksworkspace workspace')
+param workspaceName string = '${environmentName}databricks${projectName}'
+
 
 resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: resourceGroupName
@@ -64,7 +70,8 @@ module storageAccountModule 'modules/storageAccount.bicep' = {
     location: location
     storageAccountSku: storageAccountSku
     storageTier: storageTier
-    containerName: containerName
+    containerName1: containerName1
+    containerName2: containerName2
   }
 }
 
@@ -96,5 +103,14 @@ module sqlDatabaseModule 'modules/sqlDatabase.bicep' = {
     adminUsername: adminUsername
     adminPassword: adminPassword
     databaseName: databaseName
+  }
+}
+
+module dataBricksModule 'modules/dataBricks.bicep' = {
+  name: 'dataBricksDeployment'
+  scope: resourceGroup
+  params: {
+    workspaceName: workspaceName
+    location: location
   }
 }

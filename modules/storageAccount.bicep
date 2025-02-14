@@ -67,19 +67,27 @@ resource blobServices 'Microsoft.Storage/storageAccounts/blobServices@2023-01-01
   }
 }
 
-@description('The name of the container to create')
-param containerName string
+@description('The name of the landing container to create')
+param containerName1 string
 
-resource containerCreation 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-05-01' = {
-  name: containerName
+resource containerCreation1 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-05-01' = {
+  name: containerName1
   parent: blobServices
   properties: {
     publicAccess: 'None'
   }
 }
 
+@description('The name of the landing container to create')
+param containerName2 string
+
+resource containerCreation2 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-05-01' = {
+  name: containerName2
+  parent: blobServices
+  properties: {
+    publicAccess: 'None'
+  }
+}
 output storageAccountId string = storageAccount.id  
 output storageAccountName string = storageAccount.name
-output containerId string = containerCreation.id  
-
 
