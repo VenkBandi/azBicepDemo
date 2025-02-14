@@ -18,4 +18,5 @@ maintest.bicep
 python/.env
 python/secrets.json
 python/mock_performance_data.csv
+python/numbers.txt
 
