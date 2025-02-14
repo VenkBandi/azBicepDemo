@@ -2,7 +2,7 @@ import subprocess
 import sys
 
 # List of Python files to run in sequence
-scripts = ["incrementDate.py", "mockData.py", "sendData.py"]
+scripts = ["incrementDate.py","performanceIndexGenerator.py", "mockData.py", "sendData.py"]
 
 def run_script(script):
     """Run a Python script using subprocess."""
