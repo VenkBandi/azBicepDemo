@@ -2,8 +2,8 @@
 .env
 
 # Ignore data files
-*.csv
-*.txt
+python/*.csv
+python/*.txt
 
 # Ignore macOS system files
 .DS_Store
@@ -18,5 +18,5 @@ sample.txt
 maintest.bicep
 python/.env
 python/secrets.json
-python/numbers.txt
+
 
