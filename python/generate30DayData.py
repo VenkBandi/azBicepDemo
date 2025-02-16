@@ -3,7 +3,7 @@ import sys
 import time
 
 # List of Python files to run in sequence
-scripts = ["incrementDate.py","tableIndexGenerator.py", "mockData.py"]
+scripts = ["incrementDate.py","serialIndexGenerator.py", "mockData.py"]
 
 def run_script(script):
     """Run a Python script using subprocess."""
@@ -29,5 +29,5 @@ def main():
         print("All scripts executed successfully.")
 
 if __name__ == "__main__":
-    for _ in range(365):
+    for _ in range(30):
         main()

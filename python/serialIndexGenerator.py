@@ -42,23 +42,23 @@ def main():
         secrets = load_secrets()
 
         # Get the current performanceIndex
-        performance_index = secrets.get("performanceIndex", 0)
+        serial_index = secrets.get("serialIndex", 0)
 
         # Generate numbers from performanceIndex + 1 to performanceIndex + 12
-        start_number = performance_index + 1
+        start_number = serial_index + 1
         numbers = generate_numbers(start_number, MAX_NUMBERS)
 
         # Save the numbers to a text file
         save_numbers_to_file(numbers, OUTPUT_FILE)
 
         # Update the performanceIndex
-        secrets["performanceIndex"] = performance_index + MAX_NUMBERS
+        secrets["serialIndex"] = serial_index + MAX_NUMBERS
 
         # Save the updated secrets.json file
         save_secrets(secrets)
 
         print(f"Generated numbers: {numbers}")
-        print(f"Updated performanceIndex to {secrets['performanceIndex']}")
+        print(f"Updated performanceIndex to {secrets['serialIndex']}")
     except Exception as e:
         print(f"Error: {e}")
 

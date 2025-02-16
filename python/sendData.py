@@ -1,13 +1,13 @@
 from azure.storage.blob import BlobServiceClient
 import json
 import os
-csv_filename = "mock_performance_data.csv"
+csv_filename = "mockDriverPerformanceData.csv"
 
 # Load the SAS URL from the JSON file
 with open("secrets.json", "r") as file:
     config = json.load(file)
 
-sas_url = config["sas_url"]
+sas_url = config["sas_urlLanding"]
 
 blob_service_client = BlobServiceClient(account_url=sas_url)
 
