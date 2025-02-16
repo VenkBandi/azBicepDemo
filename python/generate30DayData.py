@@ -3,7 +3,7 @@ import sys
 import time
 
 # List of Python files to run in sequence
-scripts = ["incrementDate.py","performanceIndexGenerator.py", "mockData.py", "sendData.py"]
+scripts = ["incrementDate.py","tableIndexGenerator.py", "mockData.py"]
 
 def run_script(script):
     """Run a Python script using subprocess."""
@@ -29,8 +29,5 @@ def main():
         print("All scripts executed successfully.")
 
 if __name__ == "__main__":
-    while True:
-        print(f"Starting execution at {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    for _ in range(365):
         main()
-        print("Waiting 2 minutes before next run...\n")
-        time.sleep(120)  # Wait 120 seconds (2 minutes)

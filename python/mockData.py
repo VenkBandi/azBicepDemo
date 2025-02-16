@@ -1,5 +1,5 @@
 import random
-import csv
+import csv,os
 from datetime import datetime, timedelta
 import json
 
@@ -65,10 +65,16 @@ for i in range(len(driver_ids)):
         }
     mock_data.append(allocation)
 
-# Write the data to a CSV file
-with open(csv_filename, mode='w', newline='') as file:
+file_exists = os.path.isfile(csv_filename)
+
+with open(csv_filename, mode='a', newline='') as file:
     writer = csv.DictWriter(file, fieldnames=mock_data[0].keys())
-    writer.writeheader()
+    
+    # Write the header only if the file does not exist
+    if not file_exists:
+        writer.writeheader()
+    
     for data in mock_data:
         writer.writerow(data)
-print(f"Mock data written to {csv_filename}")
+
+print(f"Mock data appended to {csv_filename}")
