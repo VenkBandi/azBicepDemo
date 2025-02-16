@@ -1,8 +1,9 @@
-# Ignore node_modules (common for Node.js projects)
-node_modules/
-
 # Ignore environment variable files
 .env
+
+# Ignore data files
+*.csv
+*.txt
 
 # Ignore macOS system files
 .DS_Store
@@ -17,6 +18,5 @@ sample.txt
 maintest.bicep
 python/.env
 python/secrets.json
-python/mock_performance_data.csv
 python/numbers.txt
 
