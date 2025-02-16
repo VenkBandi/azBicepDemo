@@ -3,7 +3,7 @@
 
 # Ignore data files
 python/*.csv
-python/*.txt
+
 
 # Ignore macOS system files
 .DS_Store
