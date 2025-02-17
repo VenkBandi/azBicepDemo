@@ -37,7 +37,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
     supportsHttpsTrafficOnly: true
     minimumTlsVersion: 'TLS1_2'
     isHnsEnabled: true
-    allowBlobPublicAccess: false
+    allowBlobPublicAccess: true
     allowSharedKeyAccess: true
     encryption: {
       requireInfrastructureEncryption: true
@@ -68,26 +68,17 @@ resource blobServices 'Microsoft.Storage/storageAccounts/blobServices@2023-01-01
 }
 
 @description('The name of the landing container to create')
-param containerName1 string
+param stagingContainerName string
 
 resource containerCreation1 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-05-01' = {
-  name: containerName1
+  name: stagingContainerName
   parent: blobServices
   properties: {
     publicAccess: 'None'
   }
 }
 
-@description('The name of the landing container to create')
-param containerName2 string
 
-resource containerCreation2 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-05-01' = {
-  name: containerName2
-  parent: blobServices
-  properties: {
-    publicAccess: 'None'
-  }
-}
-output storageAccountId string = storageAccount.id  
-output storageAccountName string = storageAccount.name
+output stagingStorageAccountId string = storageAccount.id  
+output stagingStorageAccountName string = storageAccount.name
 

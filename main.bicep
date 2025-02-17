@@ -15,7 +15,10 @@ param resourceGroupName string = '${environmentName}-${projectName}-swecent'
 // Storage Account
 
 @description('The name of the storage account')
-param storageAccountName  string = '${environmentName}strageaccnt${projectName}'
+param landingStorageAccountName  string = '${environmentName}landing${projectName}'
+
+@description('The name of the storage account')
+param stagingStorageAccountName  string = '${environmentName}staging${projectName}'
 
 @description('The SKU for the storage account (e.g., Standard_LRS, Standard_GRS)')
 param storageAccountSku string
@@ -24,10 +27,11 @@ param storageAccountSku string
 param storageTier string
 
 @description('The name of the landing container to create')
-param containerName1 string
+param landingContainerName string
 
-@description('The name of the staging container to create')
-param containerName2 string
+@description('The name of the landing container to create')
+param stagingContainerName string
+
 
 // Data Factory
 
@@ -62,19 +66,29 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   location: location
 }
 
-module storageAccountModule 'modules/storageAccount.bicep' = {
-  name: 'storageAccountDeployment'
+module landingStorageAccountModule 'modules/landingStorageAccount.bicep' = {
+  name: 'landingStorageAccountDeployment'
   scope: resourceGroup
   params: {
-    storageAccountName: storageAccountName
+    storageAccountName: landingStorageAccountName
     location: location
     storageAccountSku: storageAccountSku
     storageTier: storageTier
-    containerName1: containerName1
-    containerName2: containerName2
+    landingContainerName: landingContainerName
   }
 }
 
+module stagingStorageAccountModule 'modules/landingStorageAccount.bicep' = {
+  name: 'stagingstorageAccountDeployment'
+  scope: resourceGroup
+  params: {
+    storageAccountName: stagingStorageAccountName
+    location: location
+    storageAccountSku: storageAccountSku
+    storageTier: storageTier
+    landingContainerName: stagingContainerName
+  }
+}
 
 module datafactoryModule 'modules/dataFactory.bicep' = {
   name: 'dataFactoryDeployment'

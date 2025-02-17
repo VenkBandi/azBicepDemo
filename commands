@@ -1,0 +1,12 @@
+az deployment sub create \
+  --name myproject-dev-deployment \
+  --location swedencentral \
+  --template-file main.bicep \
+  --parameters dev.parameters.json
+
+az group delete --name dev-koivisto-swecent
+
+source .env/bin/activate
+
+
+

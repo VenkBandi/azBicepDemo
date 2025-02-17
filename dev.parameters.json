@@ -14,10 +14,10 @@
       "storageAccountSku": {
         "value": "Standard_LRS"
       },
-      "containerName1": {
+      "landingContainerName": {
         "value": "landing"
       },
-      "containerName2": {
+      "stagingContainerName": {
         "value": "staging"
       },
       "storageTier": {

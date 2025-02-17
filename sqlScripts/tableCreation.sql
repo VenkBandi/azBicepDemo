@@ -17,7 +17,7 @@ CREATE TABLE Route (
 );
 
 CREATE TABLE Performance (
-    PerformanceID INT IDENTITY(1,1) PRIMARY KEY, -- Corrected syntax for auto-increment
+    serialID INT IDENTITY(1,1) PRIMARY KEY, -- Corrected syntax for auto-increment
     DriverID CHAR(4) NOT NULL,
     RouteID CHAR(4) NOT NULL,
     BusID CHAR(4) NOT NULL,
