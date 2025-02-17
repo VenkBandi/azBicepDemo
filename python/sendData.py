@@ -28,3 +28,12 @@ try:
 
 except Exception as e:
     print(f"Error: {e}")
+
+# Delete the CSV file
+# Check if the file exists before attempting to delete it
+if os.path.exists(csv_filename):
+    # Delete the file
+    os.remove(csv_filename)
+    print(f"The file '{csv_filename}' has been deleted.")
+else:
+    print(f"The file '{csv_filename}' does not exist.")
